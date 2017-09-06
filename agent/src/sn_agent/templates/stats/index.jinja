@@ -1,0 +1,14 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+
+    <dl>
+        <dt>net_version</dt>
+        <dd>
+            <pre>{{ net_version }}</pre>
+        </dd>
+    </dl>
+    <pre>{{ eth_client_modules }}</pre>
+    <pre>{{ shh_info }}</pre>
+    <pre>{{ accounts }}</pre>
+{% endblock %}

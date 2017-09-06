@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{{ "favicon.ico"|static }}">
+
+    <title>singularityNET</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ "vendor/bootstrap/css/bootstrap.css"|static }}" rel="stylesheet">
+    <link href="{{ "vendor/metismenu/metisMenu.css"|static }}" rel="stylesheet">
+    <link href="{{ "vendor/font-awesome/css/font-awesome.css"|static }}" rel="stylesheet">
+    <link href="{{ "vendor/highcharts/css/highcharts.css"|static }}" rel="stylesheet">
+
+    <link href="{{ "styles.css"|static }}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">SingularityNET</a>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-comment fa-fw"></i> New Comment
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                <span class="pull-right text-muted small">12 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-tasks fa-fw"></i> New Task
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="text-center" href="#">
+                            <strong>See All Alerts</strong>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-alerts -->
+            </li>
+        </ul>
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+
+                    <li>
+                        <a href="/" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-plug  fa-fw" aria-hidden="true"></i> Workers<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/workers/dfcbee73-df66-4de3-85ed-c66a63a577c2">Image Recognizer</a>
+                            </li>
+                            <li>
+                                <a href="/workers/88f9eba0-5c29-46f9-a20e-cdaa2496ed2e">Language Recognizer</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ 'jobs'|url }}"><i class="fa fa-table fa-fw"></i> Jobs</a>
+                    </li>
+                    <li>
+                        <a href="{{ 'stats'|url }}"><i class="fa fa-table fa-fw"></i> Stats</a>
+                    </li>
+                    <li>
+                        <a href="{{ 'network'|url }}"><i class="fa fa-table fa-fw"></i> Network</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">{{ page_title|default("page_title not set") }}</h1>
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="{{ 'vendor/jquery/jquery.js'|static }}"></script>
+<script src="{{ 'vendor/bootstrap/js/bootstrap.js'|static }}"></script>
+<script src="{{ 'vendor/metismenu/metisMenu.js'|static }}"></script>
+<script src="{{ 'vendor/highcharts/highcharts.js'|static }}"></script>
+<script src="{{ 'vendor/vue/vue.js'|static }}"></script>
+<script src="{{ 'app.js'|static }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+*.egg-info/
+.tox/
+local/
+.cache
+node_modules/
+.idea/inspectionProfiles/
+.idea/workspace.xml
+__pycache__/
+/sn_agent/static/vendor/

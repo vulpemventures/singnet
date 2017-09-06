@@ -1,0 +1,49 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+
+    <form class="form-horizontal" method="post" action="{{ 'jobs'|url }}">
+
+        {% if form_errors %}
+            <div class="error">
+                {{ form_errors }}
+            </div>
+        {% endif %}
+
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Form Name</legend>
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="ontology_id">Select Ontology Node</label>
+                <div class="col-md-4">
+                    <select id="selectbasic" name="ontology_id" class="form-control">
+                        <option value="dfcbee73-df66-4de3-85ed-c66a63a577c2">Image Recognizer</option>
+                        <option value="88f9eba0-5c29-46f9-a20e-cdaa2496ed2e">Language Recognizer</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textarea">Text Area</label>
+                <div class="col-md-4">
+                    <textarea class="form-control" id="textarea" name="textarea">default text</textarea>
+                </div>
+            </div>
+
+            <!-- Button (Double) -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="button1id">Double Button</label>
+                <div class="col-md-8">
+                    <button id="button1id" name="button1id" class="btn btn-success">Good Button</button>
+                    <button id="button2id" name="button2id" class="btn btn-danger">Scary Button</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+{% endblock %}

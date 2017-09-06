@@ -1,0 +1,21 @@
+---
+
+opencog:
+  ontology_node_id: 613cfd03-14a2-45dd-a94c-3c7798aca958
+  required_ontology_node_ids:
+    - eced6a6f-1051-4209-92b9-fbb78f66eb0b
+    - 37589980-a62d-4850-9ba0-5f8aff490ace
+  host: 127.0.0.1
+  port: 15010
+
+jsonrpc:
+  ontology_node_id: 86717381-0b4c-440f-9ed6-41206fbba0bc
+  required_ontology_node_ids:
+    - 1f4ef6d1-eacc-48f8-aead-14b14b07f148
+    - 49e5bd03-2caa-4b99-a349-452d1a9d5845
+  url: http://localhost:8091
+
+jsonrpc:
+  comment: A worker that needs no supporting workers
+  ontology_node_id: b95fb615-cb03-4d19-bf71-2a892c3d45a8
+  url: http://localhost:8092
