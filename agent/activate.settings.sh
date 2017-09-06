@@ -5,7 +5,7 @@
 
 # the AIO_ env variables are used by `adev runserver` when serving your app for development
 #export AIO_APP_PATH="app/"
-export AIO_STATIC_PATH="${AGENT_SRC_DIR}/sn_agent/static/"
+#export AIO_STATIC_PATH="${AGENT_SRC_DIR}/sn_agent_ui/static/"
 export AIO_LIVERELOAD="true"
 export AIO_DEBUG_TOOLBAR="true"
 export AIO_PRECHECK="true"

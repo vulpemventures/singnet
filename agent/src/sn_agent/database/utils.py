@@ -1,7 +1,8 @@
 from aiopg.sa import create_engine
-from models import Base
-from settings import Settings
+
 from sqlalchemy_utils import drop_database, database_exists, create_database
+
+from sn_agent.database import DatabaseSettings
 
 
 def prepare_database(delete_existing: bool) -> bool:
@@ -11,8 +12,8 @@ def prepare_database(delete_existing: bool) -> bool:
     :param delete_existing: whether or not to drop an existing database if it exists
     :return: whether or not a database has been (re)created
     """
-    settings = Settings()
-    db_url = settings.DB_URL
+    settings = DatabaseSettings()
+    db_url = settings.URL
 
     if database_exists(db_url):
         if delete_existing:

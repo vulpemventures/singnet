@@ -4,8 +4,8 @@ import logging
 import uvloop
 from aiohttp import web
 
+import sn_agent_ui
 from sn_agent.database import setup_db
-from sn_agent.jinja import setup_jinja
 from sn_agent.log import setup_logging
 from sn_agent.network import setup_network
 from sn_agent.routes import setup_routes
@@ -23,8 +23,6 @@ def create_app(loop):
 
     setup_logging()
     setup_db(app)
-    # setup_middleware(app)
-    setup_jinja(app)
     setup_session(app)
     setup_routes(app)
 
@@ -32,4 +30,8 @@ def create_app(loop):
     setup_workers(app)
 
     app['name'] = 'SingularityNET Agent'
+
+    admin = sn_agent_ui.get_admin()
+    app.add_subapp('/admin/', admin)
+
     return app
