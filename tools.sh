@@ -43,7 +43,7 @@ GETH=${INSTALL_DIR}/geth/geth
 SOLC=${INSTALL_DIR}/solidity-src/build/solc/solc
 
 function system_prep {
-    sudo apt install build-essential cmake libboost-all-dev libz3-dev libcupti-dev zlib1g-dev
+    sudo apt install build-essential cmake libboost-all-dev libz3-dev libcupti-dev zlib1g-dev g++
 }
 
 function ensure_install_dir {
