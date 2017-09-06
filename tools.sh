@@ -42,6 +42,10 @@ REDIS=${REDIS_DIR}/bin/redis-server
 GETH=${INSTALL_DIR}/geth/geth
 SOLC=${INSTALL_DIR}/solidity-src/build/solc/solc
 
+function system_prep {
+    sudo apt install build-essential cmake libboost-all-dev libz3-dev libcupti-dev zlib1g-dev
+}
+
 function ensure_install_dir {
     mkdir -p ${INSTALL_DIR}
 }
@@ -289,6 +293,10 @@ case "$1" in
 
 clean)
     remove_install_dir
+    ;;
+
+system-prep)
+    system_prep
     ;;
 
 prep)
