@@ -2,15 +2,15 @@
 # help confirm pull requests to this project.
 
 language: python
+python:
+  - "3.6"
 
 env:
   - TOXENV=py36
 
-install: pip install coveralls tox
+install:
+  - pip install -r agent/requirements.txt
 
-script: tox
-
-after_success: coveralls
-
-notifications:
-  email: false
+script:
+  - ./tools prep
+  - ./tools run
