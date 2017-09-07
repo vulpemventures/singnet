@@ -10,7 +10,7 @@
         "spec": ">=5.0.14 <6.0.0",
         "type": "range"
       },
-      "/home/christian/Documents/projects/singnet/agent"
+      "/media/sf_source/singnet/agent"
     ]
   ],
   "_from": "highcharts@>=5.0.14 <6.0.0",
@@ -44,7 +44,7 @@
   "_shasum": "0ef14cca9f1345408568b533dae1478950d96810",
   "_shrinkwrap": null,
   "_spec": "highcharts@^5.0.14",
-  "_where": "/home/christian/Documents/projects/singnet/agent",
+  "_where": "/media/sf_source/singnet/agent",
   "author": {
     "name": "Highsoft AS",
     "email": "support@highcharts.com",

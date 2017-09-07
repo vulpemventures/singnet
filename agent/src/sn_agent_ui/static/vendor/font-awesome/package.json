@@ -10,7 +10,7 @@
         "spec": ">=4.7.0 <5.0.0",
         "type": "range"
       },
-      "/home/christian/Documents/projects/singnet/agent"
+      "/media/sf_source/singnet/agent"
     ]
   ],
   "_from": "font-awesome@>=4.7.0 <5.0.0",
@@ -44,7 +44,7 @@
   "_shasum": "8fa8cf0411a1a31afd07b06d2902bb9fc815a133",
   "_shrinkwrap": null,
   "_spec": "font-awesome@^4.7.0",
-  "_where": "/home/christian/Documents/projects/singnet/agent",
+  "_where": "/media/sf_source/singnet/agent",
   "author": {
     "name": "Dave Gandy",
     "email": "dave@fontawesome.io",
