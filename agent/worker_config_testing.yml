@@ -22,4 +22,4 @@ jsonrpc:
 
 module:
   ontology_node_id: b95fb615-cb03-4d19-9ba0-2a892c3d9ed6
-  name: my_worker.worker.MyWorker
+  name: sn_agent.worker.ServiceWorker
