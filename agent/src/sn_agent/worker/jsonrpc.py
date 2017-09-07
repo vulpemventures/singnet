@@ -7,11 +7,11 @@ from sn_agent.worker.base import WorkerBase
 class JsonRpcWorker(WorkerBase):
     type_name = "JSON-RPC"
 
-    def __init__(self, app, ontology_node_id, required_ontology_node_ids, url, loop):
+    def __init__(self, app, ontology_node_id, required_ontology_node_ids, url):
         super().__init__(app, ontology_node_id, required_ontology_node_ids)
 
         self.url = url
-        self.loop = loop
+        self.loop = app.loop
 
     async def can_perform(self) -> bool:
 

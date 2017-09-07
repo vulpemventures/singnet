@@ -31,7 +31,9 @@ def create_app(loop):
 
     app['name'] = 'SingularityNET Agent'
 
-    admin = sn_agent_ui.get_admin()
-    app.add_subapp('/admin/', admin)
+    # Leave this off until it is working
+    if False:
+        admin = sn_agent_ui.get_admin()
+        app.add_subapp('/admin/', admin)
 
     return app

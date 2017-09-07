@@ -19,3 +19,7 @@ jsonrpc:
   comment: A worker that needs no supporting workers
   ontology_node_id: b95fb615-cb03-4d19-bf71-2a892c3d45a8
   url: http://localhost:8092
+
+module:
+  ontology_node_id: b95fb615-cb03-4d19-9ba0-2a892c3d9ed6
+  name: my_worker.worker.MyWorker

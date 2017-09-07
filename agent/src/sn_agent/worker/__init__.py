@@ -1,4 +1,5 @@
 import yaml
+from jinja2.utils import import_string
 
 from sn_agent.worker.jsonrpc import JsonRpcWorker
 from sn_agent.worker.opencog import OpenCogWorker
@@ -26,9 +27,15 @@ def setup_workers(app):
             host = data['host']
             port = data['port']
             worker = OpenCogWorker(app, ontology_node_id, required_ontology_node_ids, host, port)
+
         elif section == 'jsonrpc':
             url = data['url']
-            worker = JsonRpcWorker(app, ontology_node_id, required_ontology_node_ids, url, app.loop)
+            worker = JsonRpcWorker(app, ontology_node_id, required_ontology_node_ids, url)
+
+        elif section == 'module':
+            name = data['name']
+            module_klass = import_string(name)
+            worker = module_klass(app, ontology_node_id, required_ontology_node_ids, name)
 
         else:
             raise RuntimeError('Unknown worker type specified: %s' % section)
