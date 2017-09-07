@@ -3,6 +3,7 @@ from jinja2.utils import import_string
 
 from sn_agent.worker.jsonrpc import JsonRpcWorker
 from sn_agent.worker.opencog import OpenCogWorker
+from sn_agent.worker.service import ServiceWorker
 from sn_agent.worker.settings import WorkerSettings
 
 
