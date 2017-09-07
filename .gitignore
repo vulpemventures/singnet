@@ -2,10 +2,9 @@
 .tox/
 local
 local/
-local/*
 .cache
 node_modules/
 .idea/inspectionProfiles/
 .idea/workspace.xml
 __pycache__/
-agent/src/sn_agent_ui/static/vendor/*
+agent/src/sn_agent_ui/static/vendor/
