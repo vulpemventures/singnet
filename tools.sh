@@ -29,7 +29,7 @@ NODE_DIR=${INSTALL_DIR}/node
 NODE=${NODE_DIR}/bin/node
 NPM=${NODE_DIR}/bin/npm
 NODE_MODULES=${AGENT_DIR}/node_modules
-VENDOR=${AGENT_SRC_DIR}/sn_agent/static/vendor
+VENDOR=${AGENT_SRC_DIR}/sn_agent_ui/static/vendor
 
 RUBY_DIR=${INSTALL_DIR}/ruby
 RUBY=${RUBY_DIR}/bin/ruby
