@@ -22,7 +22,7 @@ def create_app(loop):
     app = web.Application()
 
     setup_logging()
-    setup_db(app)
+    # setup_db(app)
     setup_session(app)
     setup_routes(app)
 
