@@ -12,5 +12,4 @@ install:
   - pip install -r agent/requirements.txt
 
 script:
-  - ./tools prep
-  - ./tools run
+  - tox
