@@ -258,7 +258,7 @@ function remove_install_dir {
 
 function npm_run {
     cd ${AGENT_SRC_DIR}
-    ${NPM} install
+    PATH=${NODE_DIR}/bin:$PATH ${NPM} install
     cd ..
 }
 
