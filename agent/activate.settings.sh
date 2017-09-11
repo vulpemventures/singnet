@@ -23,4 +23,4 @@ export SN_AGENT_COOKIE_SECRET="M0a6HuukMqXf9VMmMMf9RiZFKKPc5etebG4-R8IPTQc="
 # this should be changed for every agent - we need a way to create these and store the data persistently - perhaps a file?
 export SN_NETWORK_AGENT_ID='b545478a-971a-48ec-bc56-4b9b7176799c'
 
-export SN_WORKER_WORKER_CONFIG_FILE="${AGENT_DIR}/worker_config_testing.yml"
+export SN_SERVICE_ADAPTER_CONFIG_FILE="${AGENT_DIR}/service_adapter_config_example.yml"

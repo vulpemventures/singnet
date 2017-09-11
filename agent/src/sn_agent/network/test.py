@@ -97,7 +97,7 @@ class TestNetwork(NetworkBase):
 
     def perform(self, ontology_node_id, json_content) -> bool:
         """
-        This will instruct the worker to do the task requested
+        This will instruct the service adapter to do the task requested
 
         :param ontology_node_id:
         :param json_content:

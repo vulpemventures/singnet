@@ -1,7 +1,8 @@
-from sn_agent.worker.base import WorkerBase
+
+from sn_agent.service_adapter.base import ServiceAdapterBase
 
 
-class OpenCogWorker(WorkerBase):
+class OpenCogServiceAdapter(ServiceAdapterBase):
     type_name = "OpenCog"
 
     def __init__(self, app, ontology_node_id, required_ontology_node_ids, host, port):

@@ -1,10 +1,10 @@
 import aiohttp
 from jsonrpcclient.aiohttp_client import aiohttpClient
 
-from sn_agent.worker.base import WorkerBase
+from sn_agent.service_adapter.base import ServiceAdapterBase
 
 
-class JsonRpcWorker(WorkerBase):
+class JsonRpcServiceAdapter(ServiceAdapterBase):
     type_name = "JSON-RPC"
 
     def __init__(self, app, ontology_node_id, required_ontology_node_ids, url):

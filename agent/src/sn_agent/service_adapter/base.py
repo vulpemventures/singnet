@@ -3,9 +3,9 @@ import logging
 logger = logging.getLogger(__file__)
 
 
-class WorkerBase(object):
+class ServiceAdapterBase(object):
     """
-    This is the worker base, all other workers are based on it.
+    This is the service adapter base, all other service adapters are based on it.
     """
 
     type_name = "Base"

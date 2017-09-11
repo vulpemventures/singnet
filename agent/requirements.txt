@@ -12,20 +12,12 @@ jsonrpcserver[aiohttp]
 
 uvloop
 
-sqlalchemy
-sqlalchemy-utils
-aiopg
-alembic
-
 colorlog
 
 pytest-aiohttp
 pytest-cov
 pytest
 tox
-
-aioredis
-hiredis
 
 rdflib
 urllib3
