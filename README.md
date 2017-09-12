@@ -29,10 +29,10 @@ There are seven major interacting components in the SingularityNET architecture:
  agents in the SingularityNET universe.
 
 ## Example Scenario ##
-A SingularityNET Agent provides document smmarization services for corporate work
+A SingularityNET Agent provides document summarization services for corporate work
 groups. As inputs for this service, it might require:
 
-* **Glossary** - a glossary of terms and entities relevant a the corporation
+* **Glossary** - a glossary of terms and entities relevant to the corporate service client
 
 * **People Images** - a set of images representing people to be recognized
 
@@ -40,9 +40,9 @@ groups. As inputs for this service, it might require:
   
 * **Documents** - a set of documents to summarize in accepted formats
 
-The task of performing document summarization requires summarizing text, identifying
-relevant objects and people in images, ranking relevance, processing video to
-extract objects and people and to provide a textual description, and generating
+The task of performing document summarization requires summarizing text; identifying
+relevant objects and people in images; ranking relevance; processing video to
+extract objects, people and a textual description; and generating
 a ranked summary of the document.
 
 ### Internal Services ###
@@ -104,9 +104,10 @@ ServiceAdapterABC subclasses must implement:
 Additionally, ServiceAdapterABC subclasses may also implement:
 * **`init`** - perform service one-time initialization
 * **`start`** - connect with external network providers required to perform service
-* **`stop`** - disconnect in preparation for taking service offline
+* **`stop`** - disconnect in preparation for taking the service offline
 * **`can_perform`** - override to implment service specific logic
-* **`all_required_agents_can_perform`** - check if dependent agents can perform subservices
+* **`all_required_agents_can_perform`** - check if dependent agents can perform
+ sub-services
 
 
 
