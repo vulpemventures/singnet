@@ -1,9 +1,10 @@
 import logging
+from abc import ABC, abstractmethod
 
 logger = logging.getLogger(__file__)
 
 
-class ServiceAdapterBase(object):
+class ServiceAdapterABC(ABC):
     """
     This is the service adapter base, all other service adapters are based on it.
     """
@@ -27,7 +28,7 @@ class ServiceAdapterBase(object):
 
         self.requirements_met = self.has_all_requirements()
 
-        logger.info('Worker %s initialized. Requirements met: %s', self.type_name, self.requirements_met)
+        logger.info('Service Adapter: %s initialized. Requirements met: %s', self.type_name, self.requirements_met)
 
     def has_all_requirements(self):
         """
@@ -84,6 +85,7 @@ class ServiceAdapterBase(object):
 
         return True
 
+    @abstractmethod
     def perform(self, *args, **kwargs):
         """
         This is where the work gets done, the worker will block here until the work itself is done

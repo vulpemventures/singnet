@@ -8,20 +8,17 @@
 # Distributed under the MIT software license, see LICENSE file.
 #
 
-from abc import ABCMeta, abstractmethod
-from sn_agent.network.settings import NetworkSettings
-from sn_agent.network.enum import NetworkStatus
-from sn_agent.ontology.ontology import Ontology
-from sn_agent.ontology.service import Service
-from sn_agent.agent.base import AgentBase
-from enum import Enum
+from abc import abstractmethod, ABC
 
-class NetworkBase(metaclass=ABCMeta):
-    def __init__(self, app, agent : AgentBase):
+from sn_agent.network.enum import NetworkStatus
+from sn_agent.network.settings import NetworkSettings
+from sn_agent.ontology.service_descriptor import ServiceDescriptor
+
+
+class NetworkABC(ABC):
+    def __init__(self, app):
         self.app = app
-        self.agent = agent
         self.settings = NetworkSettings()
-        self.ontology = Ontology(app, '0.70a1')
 
     @abstractmethod
     def join_network(self) -> bool:
@@ -37,7 +34,6 @@ class NetworkBase(metaclass=ABCMeta):
         Should this do something in the blockchain or just delete the public and private keys?
         """
         pass
-
 
     @abstractmethod
     def logon_network(self) -> bool:
@@ -60,11 +56,11 @@ class NetworkBase(metaclass=ABCMeta):
         """
         pass
 
-    def am_i_a_member(self) -> NetworkStatus:
+    def am_i_a_member(self) -> bool:
         """
         Determine what the current network status is (joined or not joined)
         """
-        return self.get_network_status() == STATUS_MEMBER
+        return self.get_network_status() == NetworkStatus.STATUS_MEMBER
 
     @abstractmethod
     def update_ontology(self):
@@ -75,7 +71,7 @@ class NetworkBase(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def advertise_service(self, service: Service):
+    def advertise_service(self, service: ServiceDescriptor):
         """
         Given an ontology, advertise it as a service that the agent provides
         :param service: a service objects defining a service spec
@@ -83,7 +79,7 @@ class NetworkBase(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def remove_service_advertisement(self, service: Service):
+    def remove_service_advertisement(self, service: ServiceDescriptor):
         """
         Remove the advertisement of the service for a given agent
         :param service:
@@ -91,12 +87,12 @@ class NetworkBase(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def find_service_providers(self, service: Service) -> list:
+    def find_service_providers(self, service: ServiceDescriptor) -> list:
         """
         Called by the UI as well as find_provider - should return a list that contains
         information about all the providers that have indicated that they can proved
         the designated service.
-        :param ontology_node_id:
+        :param service:
         :return: a list of external agents which provide the service requested
         """
         pass

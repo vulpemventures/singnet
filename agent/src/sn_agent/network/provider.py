@@ -15,10 +15,10 @@
 #
 
 from sn_agent.agent.base import AgentBase
-from sn_agent.ontology.service import Service
+from sn_agent.ontology.service_descriptor import ServiceDescriptor
 
 class ExternalServiceProvider(AgentBase):
-    def __init__(self, net, agent_id, service: Service):
+    def __init__(self, net, agent_id, service: ServiceDescriptor):
         self.net = net
         self.agent_id = agent_id
         self.service = service
@@ -27,7 +27,7 @@ class ExternalServiceProvider(AgentBase):
         return self.net.ask_agent_if_can_perform(self.agent_id, self.service)
 
     def perform(self, service: Service):
-        return self.net.ask_agent_if_can_perform(self.agent_id, self.service)
+        return self.net.ask_agent_to_perform(self.agent_id, self.service)
 
     def list_providers(self, service: Service) -> list:
         """

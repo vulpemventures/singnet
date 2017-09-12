@@ -9,6 +9,7 @@ aiohttp-swagger[performance]
 aiohttp-session[secure]
 jsonrpcclient[aiohttp]
 jsonrpcserver[aiohttp]
+semver
 
 uvloop
 

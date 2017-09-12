@@ -8,34 +8,41 @@
 # Distributed under the MIT software license, see LICENSE file.
 #
 
-from abc import ABCMeta, abstractmethod
 from sn_agent.network.enum import NetworkStatus
 from sn_agent.ontology.ontology import Ontology
 from sn_agent.ontology.service import Service
 from enum import Enum
 
+import logging
+from abc import abstractmethod, ABC
 
-class AgentBase(metaclass=ABCMeta):
+from sn_agent.ontology.service_descriptor import ServiceDescriptor
+
+logger = logging.getLogger(__name__)
+
+
+class AgentABC(ABC):
     def __init__(self, app, agent_id):
         self.app = app
         self.agent_id = agent_id
 
     @abstractmethod
-    def can_perform(self, service: Service):
+    def can_perform(self, service: ServiceDescriptor) -> bool:
+        """
+        :param service: the service to perform
+        :result: can this agent perform the described service?
+        """
+        pass
+
+    @abstractmethod
+    def perform(self, agent_id, service: ServiceDescriptor):
         """
         :param service: the service to perform
         """
         pass
 
     @abstractmethod
-    def perform(self, agent_id, service: Service):
-        """
-        :param service: the service to perform
-        """
-        pass
-
-    @abstractmethod
-    def list_providers(self, service: Service) -> list:
+    def list_providers(self, service: ServiceDescriptor) -> list:
         """
         This is used for creating the tree of subprovider services behind a given service
 

@@ -8,6 +8,7 @@
 
 from enum import Enum
 
+
 class NetworkStatus(Enum):
     STATUS_NON_MEMBER = 0
     STATUS_MEMBER = 1

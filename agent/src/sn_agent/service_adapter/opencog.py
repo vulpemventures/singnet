@@ -1,8 +1,7 @@
+from sn_agent.service_adapter.base import ServiceAdapterABC
 
-from sn_agent.service_adapter.base import ServiceAdapterBase
 
-
-class OpenCogServiceAdapter(ServiceAdapterBase):
+class OpenCogServiceAdapter(ServiceAdapterABC):
     type_name = "OpenCog"
 
     def __init__(self, app, ontology_node_id, required_ontology_node_ids, host, port):

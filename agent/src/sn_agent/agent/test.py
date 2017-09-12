@@ -11,20 +11,27 @@
 from sn_agent.agent.base import AgentBase
 from sn_agent.network.enum import NetworkStatus
 from sn_agent.ontology.ontology import Ontology
-from sn_agent.ontology.service import Service
+from sn_agent.ontology.service import ServiceDescriptor
 from enum import Enum
 
+import logging
 
-class TestAgent(AgentBase):
+from sn_agent.agent.base import AgentABC
+
+logger = logging.getLogger(__name__)
+
+
+class TestAgent(AgentABC):
+
     def __init__(self, app, agent_id):
-        self.app = app
-        self.agent_id = agent_id
+        super().__init__(app, agent_id)
+        logger.debug('Test Agent Started')
 
-    def can_perform(self, service: Service) -> bool:
+    def can_perform(self, service: ServiceDescriptor) -> bool:
         pass
 
-    def perform(self, service: Service) -> bool:
+    def perform(self, service: ServiceDescriptor) -> bool:
         pass
 
-    def list_providers(self, service: Service) -> list:
+    def list_providers(self, service: ServiceDescriptor) -> list:
          pass
