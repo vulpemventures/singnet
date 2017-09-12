@@ -6,7 +6,28 @@ from sn_agent.service_adapter.opencog import OpenCogServiceAdapter
 from sn_agent.service_adapter.settings import ServiceAdapterSettings
 
 
-def setup_service_adapters(app):
+class ServiceManager:
+    def __init__(self, service_adapters):
+        self.service_adapters = service_adapters
+
+    def init_all(self):
+        for service_adapter in self.service_adapters:
+            service_adapter.init()
+
+    def start(self, service_descriptor):
+        # Find the service adapters for a given service descriptor and disable them
+        for service_adapter in self.service_adapters:
+            if service_adapter.id == service_descriptor.id:
+                service_adapter.start()
+
+    def stop(self, service_descriptor):
+        # Find the service adapters for a given service descriptor and disable them
+        for service_adapter in self.service_adapters:
+            if service_adapter.id == service_descriptor.id:
+                service_adapter.stop()
+
+
+def setup_service_manager(app):
     settings_obj = ServiceAdapterSettings()
 
     config_file = settings_obj.CONFIG_FILE
@@ -42,7 +63,7 @@ def setup_service_adapters(app):
 
         service_adapters.append(service_adapter)
 
-    # All worker objects loaded, now init them
+    service_manager = ServiceManager(service_adapters)
+    service_manager.init_all()
 
-    for service_adapter in service_adapters:
-        service_adapter.init()
+    app['service_manager'] = service_manager

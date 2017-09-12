@@ -7,6 +7,11 @@ async def ping():
     return 'pong'
 
 
+@methods.add
+async def disable_service(service_descriptor):
+    return 'pong'
+
+
 async def handler(request):
     request = await request.text()
     response = await methods.dispatch(request)
