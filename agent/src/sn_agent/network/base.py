@@ -1,101 +1,102 @@
-from sn_agent.network import NetworkSettings
+#
+# sn_agent/base.py - implementation of abstract class defining API for Network
+# communication with block-chain implementations through connections with
+# smart contracts and block-chain messaging systems.
+#
+# Copyright (c) 2017 SingularityNET
+#
+# Distributed under the MIT software license, see LICENSE file.
+#
 
+from abc import ABCMeta, abstractmethod
+from sn_agent.network.settings import NetworkSettings
+from sn_agent.network.enum import NetworkStatus
+from sn_agent.ontology.ontology import Ontology
+from sn_agent.ontology.service import Service
+from sn_agent.agent.base import AgentBase
+from enum import Enum
 
-class NetworkBase(object):
-    def __init__(self, app):
+class NetworkBase(metaclass=ABCMeta):
+    def __init__(self, app, agent : AgentBase):
         self.app = app
+        self.agent = agent
         self.settings = NetworkSettings()
+        self.ontology = Ontology(app, '0.70a1')
 
-    def join(self) -> bool:
+    @abstractmethod
+    def join_network(self) -> bool:
         """
-        Agent calls this the first time to connect to the network. An Private and Public key should be returned
+        Agent calls this the first time to connect to the network. An Private and Public key
+        should be returned
         """
-        raise NotImplementedError()
+        pass
 
-    def leave(self) -> bool:
+    @abstractmethod
+    def leave_network(self) -> bool:
         """
         Should this do something in the blockchain or just delete the public and private keys?
         """
-        raise NotImplementedError()
+        pass
 
-    def status(self) -> bool:
+
+    @abstractmethod
+    def logon_network(self) -> bool:
+        """
+        Agent calls this to logon to the network prior to calling network operations
+        """
+        pass
+
+    @abstractmethod
+    def logoff_network(self) -> bool:
+        """
+        Agent calls this to loff off the network after calling network operations
+        """
+        pass
+
+    @abstractmethod
+    def get_network_status(self) -> NetworkStatus:
         """
         Determine what the current network status is (joined or not joined)
-        :return:
         """
-        raise NotImplementedError()
+        pass
 
-    def get_ontology(self):
+    def am_i_a_member(self) -> NetworkStatus:
         """
-        Asks for the latest ontology from wherever it is stored.
-        :return:
+        Determine what the current network status is (joined or not joined)
         """
-        raise NotImplementedError()
+        return self.get_network_status() == STATUS_MEMBER
 
-    def advertise(self, agent_id: str, ontology_node_id) -> bool:
+    @abstractmethod
+    def update_ontology(self):
+        """
+        Updates self.ontology from the blockchain with any changes since the last
+        time update was called.
+        """
+        pass
+
+    @abstractmethod
+    def advertise_service(self, service: Service):
         """
         Given an ontology, advertise it as a service that the agent provides
-        :param agent_id:
-        :param ontology_node_id:
-        :return:
+        :param service: a service objects defining a service spec
         """
-        raise NotImplementedError()
+        pass
 
-    def deadvertise(self, agent_id: str, ontology_node_id) -> bool:
+    @abstractmethod
+    def remove_service_advertisement(self, service: Service):
         """
         Remove the advertisement of the service for a given agent
-        :param agent_id:
+        :param service:
+        """
+        pass
+
+    @abstractmethod
+    def find_service_providers(self, service: Service) -> list:
+        """
+        Called by the UI as well as find_provider - should return a list that contains
+        information about all the providers that have indicated that they can proved
+        the designated service.
         :param ontology_node_id:
-        :return:
+        :return: a list of external agents which provide the service requested
         """
-        raise NotImplementedError()
-
-    def find_providers(self, ontology_node_id) -> list:
-        """
-        Called by the UI as well as find_provider - should return a list that contains information about all the providers that have indicated that they can proved the designated service
-        :param ontology_node_id:
-        :return:
-        """
-        raise NotImplementedError()
-
-    def ask_agent_if_can_perform(self, agent_id, ontology_node_id) -> bool:
-        """
-        :param agent_id:
-        :param ontology_node_id:
-        :return:
-        """
-        raise NotImplementedError()
-
-    def ask_agent_to_perform(self, agent_id, ontology_id, json_content) -> bool:
-        """
-
-        :return:
-        """
-        raise NotImplementedError()
-
-    def ask_agent_for_their_providers(self, agent_id, ontology_node_id) -> list:
-        """
-        This is used for creating the tree of services behind a given ontology
-
-        :param agent_id:
-        :param ontology_node_id:
-        :return:
-        """
-        raise NotImplementedError()
-
-    def can_i_perform(self, ontology_node_id) -> bool:
-        """
-        This is a request coming from the network asking if I can actually do the service
-
-        :param ontology_node_id:
-        :return:
-        """
-
-    def perform(self, ontology_node_id, json_content) -> bool:
-        """
-        This will instruct the worker to do the task requested
-
-        :param ontology_node_id:
-        :param json_content:
-        :return:
-        """
+        pass

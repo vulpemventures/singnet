@@ -1,105 +1,81 @@
 from sn_agent.network.base import NetworkBase
+from sn_agent.network.enum import NetworkStatus
+from sn_agent.agent.base import AgentBase
+from sn_agent.ontology.ontology import Ontology
+from sn_agent.ontology.service import Service
 from sn_agent.network.provider import Provider
 
+from sn_agent.network.settings import NetworkSettings
 
 class TestNetwork(NetworkBase):
-    def join(self) -> bool:
-        """
-        Agent calls this the first time to connect to the network. An Private and Public key should be returned
-        """
-        raise NotImplementedError()
+    def __init__(self, app, agent : AgentBase):
+        super().__init__(app, agent)
 
-    def leave(self) -> bool:
+    def join_network(self) -> bool:
+        """
+        Agent calls this the first time to connect to the network. An Private and Public key
+        should be returned
+        """
+        pass
+
+    def leave_network(self) -> bool:
         """
         Should this do something in the blockchain or just delete the public and private keys?
         """
-        raise NotImplementedError()
+        pass
 
-    def status(self) -> bool:
-        """
-        Determine what the current network status is
-        :return:
-        """
-        raise NotImplementedError()
 
-    def get_ontology(self):
+    def logon_network(self) -> bool:
         """
-        Asks for the latest ontology
-        :return:
+        Agent calls this to logon to the network prior to calling network operations
         """
-        raise NotImplementedError()
+        pass
 
-    def advertise(self, agent_id: str, ontology_node_id) -> bool:
+    def logoff_network(self) -> bool:
         """
+        Agent calls this to loff off the network after calling network operations
+        """
+        pass
 
-        :param agent_id:
+    def get_network_status(self) -> NetworkStatus:
+        """
+        Determine what the current network status is (joined or not joined)
+        """
+        return STATUS_NON_MEMBER
+
+    def am_i_a_member(self) -> NetworkStatus:
+        """
+        Determine what the current network status is (joined or not joined)
+        """
+        return self.get_network_status() == STATUS_MEMBER
+
+    def update_ontology(self):
+        """
+        Updates self.ontology from the blockchain with any changes since the last
+        time update was called.
+        """
+        pass
+
+    def advertise_service(self, service: Service):
+        """
+        Given an ontology, advertise it as a service that the agent provides
+        :param service: a service objects defining a service spec
+        """
+        pass
+
+    def remove_service_advertisement(self, service: Service):
+        """
+        Remove the advertisement of the service for a given agent
+        :param service:
+        """
+        pass
+
+    def find_service_providers(self, service: Service) -> list:
+        """
+        Called by the UI as well as find_provider - should return a list that contains
+        information about all the providers that have indicated that they can proved
+        the designated service.
         :param ontology_node_id:
-        :return:
+        :return: a list of external agents which provide the service requested
         """
-        raise NotImplementedError()
-
-    def deadvertise(self, agent_id: str, ontology_node_id) -> bool:
-        """
-
-        :param agent_id:
-        :param ontology_node_id:
-        :return:
-        """
-        raise NotImplementedError()
-
-    def find_providers(self, ontology_node_id) -> list:
-        """
-        Called by the UI as well as find_provider - should return a list that contains information about all the providers that have indicated that they can proved the designated service
-        :param ontology_node_id:
-        :return:
-        """
-
-        providers = []
-        agent_id = 'testing'
-        providers.append(Provider(self, agent_id, 'eced6a6f-1051-4209-92b9-fbb78f66eb0b'))
-        providers.append(Provider(self, agent_id, '37589980-a62d-4850-9ba0-5f8aff490ace'))
-
-        return providers
-
-    def ask_agent_if_can_perform(self, agent_id, ontology_node_id) -> bool:
-        """
-        :param agent_id:
-        :param ontology_node_id:
-        :return:
-        """
-
-        return True
-
-    def ask_agent_to_perform(self, agent_id, ontology_id, json_content) -> bool:
-        """
-
-        :return:
-        """
-        raise NotImplementedError()
-
-    def ask_agent_for_their_providers(self, agent_id, ontology_node_id) -> list:
-        """
-        This is used for creating the tree of services behind a given ontology
-
-        :param agent_id:
-        :param ontology_node_id:
-        :return:
-        """
-        raise NotImplementedError()
-
-    def can_i_perform(self, ontology_node_id) -> bool:
-        """
-        This is a request coming from the network asking if I can actually do the service
-
-        :param ontology_node_id:
-        :return:
-        """
-
-    def perform(self, ontology_node_id, json_content) -> bool:
-        """
-        This will instruct the service adapter to do the task requested
-
-        :param ontology_node_id:
-        :param json_content:
-        :return:
-        """
+        pass

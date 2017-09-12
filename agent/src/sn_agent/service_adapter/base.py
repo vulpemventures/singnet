@@ -30,17 +30,16 @@ class ServiceAdapterBase(object):
         logger.info('Worker %s initialized. Requirements met: %s', self.type_name, self.requirements_met)
 
     def has_all_requirements(self):
-
+        """
         if self.required_ontology_node_ids is None:
             return True
-
         network = self.app['network']
         for required_ontology_node_id in self.required_ontology_node_ids:
             providers = network.find_providers(required_ontology_node_id)
 
             if len(providers) == 0:
                 return False
-
+        """
         return True
 
     def start(self):

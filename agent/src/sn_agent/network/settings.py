@@ -2,7 +2,6 @@ import uuid
 
 from sn_agent import SettingsBase, Required
 
-
 class NetworkSettings(SettingsBase):
     def __init__(self, **custom_settings):
         self._ENV_PREFIX = 'SN_NETWORK_'
