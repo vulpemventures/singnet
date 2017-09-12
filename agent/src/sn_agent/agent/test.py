@@ -11,6 +11,7 @@
 from sn_agent.agent.base import AgentBase
 from sn_agent.network.enum import NetworkStatus
 from sn_agent.ontology.ontology import Ontology
+from sn_agent.ontology.service import Service
 from enum import Enum
 
 
@@ -19,11 +20,11 @@ class TestAgent(AgentBase):
         self.app = app
         self.agent_id = agent_id
 
-    def can_perform(self, agent_id, ontology_node_id) -> bool:
+    def can_perform(self, service: Service) -> bool:
         pass
 
-    def perform(self, agent_id, ontology_id, json_content) -> bool:
+    def perform(self, service: Service) -> bool:
         pass
 
-    def list_providers(self, agent_id, ontology_node_id) -> list:
+    def list_providers(self, service: Service) -> list:
          pass

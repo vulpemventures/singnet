@@ -3,7 +3,7 @@ from sn_agent.network.enum import NetworkStatus
 from sn_agent.agent.base import AgentBase
 from sn_agent.ontology.ontology import Ontology
 from sn_agent.ontology.service import Service
-from sn_agent.network.provider import Provider
+from sn_agent.network.provider import ExternalServiceProvider
 
 from sn_agent.network.settings import NetworkSettings
 
@@ -75,7 +75,7 @@ class TestNetwork(NetworkBase):
         Called by the UI as well as find_provider - should return a list that contains
         information about all the providers that have indicated that they can proved
         the designated service.
-        :param ontology_node_id:
+        :param service:
         :return: a list of external agents which provide the service requested
         """
         pass

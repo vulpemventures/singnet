@@ -11,6 +11,7 @@
 from abc import ABCMeta, abstractmethod
 from sn_agent.network.enum import NetworkStatus
 from sn_agent.ontology.ontology import Ontology
+from sn_agent.ontology.service import Service
 from enum import Enum
 
 
@@ -20,29 +21,25 @@ class AgentBase(metaclass=ABCMeta):
         self.agent_id = agent_id
 
     @abstractmethod
-    def can_perform(self, agent_id, ontology_node_id) -> bool:
+    def can_perform(self, service: Service):
         """
-        :param agent_id:
-        :param ontology_node_id:
-        :return:
+        :param service: the service to perform
         """
         pass
 
     @abstractmethod
-    def perform(self, agent_id, ontology_id, json_content) -> bool:
+    def perform(self, agent_id, service: Service):
         """
-
-        :return:
+        :param service: the service to perform
         """
         pass
 
     @abstractmethod
-    def list_providers(self, agent_id, ontology_node_id) -> list:
+    def list_providers(self, service: Service) -> list:
         """
-        This is used for creating the tree of services behind a given ontology
+        This is used for creating the tree of subprovider services behind a given service
 
-        :param agent_id:
-        :param ontology_node_id:
+        :param service: the service for which to list sub-providers.
         :return:
         """
         pass
