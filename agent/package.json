@@ -1,0 +1,24 @@
+{
+  "name": "sn-agent-package",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opencog/singnet"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootswatch": "^3.3.7",
+    "datatables": "^1.10.13",
+    "datatables-responsive": "^1.0.7",
+    "font-awesome": "^4.7.0",
+    "highcharts": "^5.0.14",
+    "jquery": "^3.2.1",
+    "metismenu": "^2.7.0",
+    "roboto-fontface": "^0.8.0",
+    "vue": "^2.4.2"
+  },
+  "devDependencies": {
+    "webpack": "^3.5.5"
+  }
+}
