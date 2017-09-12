@@ -3,8 +3,6 @@ import logging
 from sn_agent.network.base import NetworkABC
 from sn_agent.network.enum import NetworkStatus
 
-from sn_agent.agent.base import AgentBase
-from sn_agent.ontology.ontology import Ontology
 from sn_agent.ontology.service_descriptor import ServiceDescriptor
 from sn_agent.network.provider import ExternalServiceProvider
 

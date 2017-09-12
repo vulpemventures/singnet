@@ -14,22 +14,22 @@
 # Distributed under the MIT software license, see LICENSE file.
 #
 
-from sn_agent.agent.base import AgentBase
+from sn_agent.agent.base import AgentABC
 from sn_agent.ontology.service_descriptor import ServiceDescriptor
 
-class ExternalServiceProvider(AgentBase):
+class ExternalServiceProvider(AgentABC):
     def __init__(self, net, agent_id, service: ServiceDescriptor):
         self.net = net
         self.agent_id = agent_id
         self.service = service
 
-    def can_perform(self, service: Service):
+    def can_perform(self, service: ServiceDescriptor) -> bool:
         return self.net.ask_agent_if_can_perform(self.agent_id, self.service)
 
-    def perform(self, service: Service):
+    def perform(self, service: ServiceDescriptor):
         return self.net.ask_agent_to_perform(self.agent_id, self.service)
 
-    def list_providers(self, service: Service) -> list:
+    def list_providers(self, service: ServiceDescriptor) -> list:
         """
         External providers do not list their sub-providers by default.
 

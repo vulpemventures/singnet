@@ -9,8 +9,7 @@
 #
 
 from sn_agent.network.enum import NetworkStatus
-from sn_agent.ontology.ontology import Ontology
-from sn_agent.ontology.service import Service
+from sn_agent.ontology.service_descriptor import ServiceDescriptor
 from enum import Enum
 
 import logging
