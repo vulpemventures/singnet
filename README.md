@@ -1,6 +1,114 @@
 # SingularityNET
 
-To allow multiple computers to work as a whole providing various services in a distributed and decentralized way.
+To allow multiple computers to work as a whole to provide various services in a distributed and decentralized way.
+
+## Architectural Overview ##
+There are seven major interacting components in the SingularityNET architecture:
+
+* **Network** - the block-chain and smart-contract network used for agent 
+  negotiation and discovery
+  
+* **Agent** - the agent which provides services and responds to service
+ requests by other agents in the SingularityNET
+
+* **Ontology** - contains definitions of services available in SingularityNET. 
+ Ontologies are versioned and define the semantics of network operations.
+
+* **ServiceDescriptor** - a signed immutable post-negotiation description of a
+ service which can be performed by an Agent
+ 
+* **JobDescriptor** - a list of jobs which tie a particular ServiceDescriptor with 
+ job-specific data like input and output data types, URLs, specific communication
+ protocols etc.
+
+* **ServiceAdapter** - a wrapper for AI and other services which an Agent can
+ invoke to perform the actual services required to perform a job according to
+ the negotiated ServiceDescriptor.
+
+* **ExternalServiceProvider** - a wrapper for interacting with external service
+ agents in the SingularityNET universe.
+
+## Example Scenario ##
+A SingularityNET Agent provides document smmarization services for corporate work
+groups. As inputs for this service, it might require:
+
+* **Glossary** - a glossary of terms and entities relevant a the corporation
+
+* **People Images** - a set of images representing people to be recognized
+
+* **Object Images** - a set of images representing things to be identified
+  
+* **Documents** - a set of documents to summarize in accepted formats
+
+The task of performing document summarization requires summarizing text, identifying
+relevant objects and people in images, ranking relevance, processing video to
+extract objects and people and to provide a textual description, and generating
+a ranked summary of the document.
+
+### Internal Services ###
+The SingularityNET Agent might perform the following services internally:
+
+* **Final Document Summary** - assembling the parts and generating the final product
+
+* **Text Summary** - processing the text to build a summary of text-only portions
+
+
+### External Services ###
+The Agent might use ExternalServiceProvider agents to perform the following services:
+
+* **Word Sense Disambiguation** - a sub-service used by the Agent's Text Summary
+ service to disambiguate words and meanings from text and context when more than
+ one sense is possible and grammatically correct. 
+
+* **Entity Extraction** - a sub-service which extracts object identities from
+ images and text which match the Glossary and Images entries.
+
+* **Video Summary** - a sub-service which extracts object identities from
+ images and text which match the Glossary and both Images inputs.
+
+* **Face Recognizer** - a sub-service which identifies people from the People
+Images inputs
+
+The architecture supports scenarios like the above where individual agents may 
+provide subsets or all of the services required to deliver any Service in the
+ontology.
+
+## SingularityNET API
+
+### NetworkABC ###
+The base class for block-chain netwoks. NetworkABC defines the protocol for
+managing the interactions of Agents, Ontology, ServiceDescriptors, as well as 
+Agent discovery, and negotion. Each block-chain implementation will require a
+separate NetworkABC subclass which implements the smart-contracts and communication
+protocols required to implement the Network ABC API.
+
+NetworkABC subclasses must implement:
+* **`join_network`** - creates a new agent on the block chain
+* **`leave_network`** - removes agent from the block chain
+* **`logon_network`** - opens a connection for an agent
+* **`logoff_network`** - closes the connection for an agent
+* **`get_network_status`** - get the agents status on the network
+* **`update_ontology`** - queries the block-chain and updates the ontology to current version
+* **`advertise_service`** - registers an agent's service offerings on the blockchain
+* **`remove_service_advertisement`** - removes an agents service offerings from the blockchain
+* **`find_service_providers`** - returns a list of external service provider agents
+
+
+### ServiceAdapterABC ###
+This is the base class for all Service Adapters. Services can be AI services or
+other services of use by the network like file storage, backup, etc.
+
+ServiceAdapterABC subclasses must implement:
+* **`perform`** - perform the service defined by the JobDescriptor
+
+Additionally, ServiceAdapterABC subclasses may also implement:
+* **`init`** - perform service one-time initialization
+* **`start`** - connect with external network providers required to perform service
+* **`stop`** - disconnect in preparation for taking service offline
+* **`can_perform`** - override to implment service specific logic
+* **`all_required_agents_can_perform`** - check if dependent agents can perform subservices
+
+
 
 ## Getting Started
 

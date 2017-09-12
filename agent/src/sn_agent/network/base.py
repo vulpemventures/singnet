@@ -56,7 +56,7 @@ class NetworkABC(ABC):
         """
         pass
 
-    def am_i_a_member(self) -> bool:
+    def is_agent_a_member(self, agent: AgentABC) -> bool:
         """
         Determine what the current network status is (joined or not joined)
         """
