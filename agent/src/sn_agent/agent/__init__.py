@@ -1,9 +1,10 @@
 from jinja2.utils import import_string
 
-from sn_agent.network.settings import NetworkSettings
+from sn_agent.agent.settings import AgentSettings
 
 
-def setup_network(app):
-    settings = NetworkSettings()
-    network_klass = import_string(settings.NETWORK_CLASS)
-    app['network'] = network_klass(app)
+def setup_agent(app):
+    settings = AgentSettings()
+    agent_id = settings.ID
+    klass = import_string(settings.CLASS)
+    app['agent'] = klass(app, agent_id)

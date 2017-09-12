@@ -1,17 +1,18 @@
 #
-# sn_agent/ontology.py - implementation of the ontology of services
+# sn_agent/base.py - implementation of the ontology of services
 #
 # Copyright (c) 2017 SingularityNET
 #
 # Distributed under the MIT software license, see LICENSE file.
 #
 
-from abc import ABCMeta, abstractmethod
+from abc import abstractmethod, ABC
 
-class Ontology(object):
-    def __init__(self, app, version: int):
+
+class OntologyABC(ABC):
+    def __init__(self, app):
         self.app = app
-        self.ontology_version = version
+        self.version = None
 
     @abstractmethod
     def get_service_description(self, node_id) -> str:

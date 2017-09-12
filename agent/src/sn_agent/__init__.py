@@ -1,5 +1,6 @@
 import os
 import uuid
+from abc import ABC
 from pathlib import Path
 
 from urllib3.util import Url, parse_url
@@ -10,7 +11,7 @@ class Required:
         self.v_type = v_type
 
 
-class SettingsBase:
+class SettingsBase(ABC):
     """
     Any setting defined here can be overridden by:
 

@@ -8,16 +8,18 @@
 # Distributed under the MIT software license, see LICENSE file.
 #
 
-from sn_agent.agent.base import AgentBase
-from sn_agent.network.enum import NetworkStatus
-from sn_agent.ontology.ontology import Ontology
-from enum import Enum
+import logging
+
+from sn_agent.agent.base import AgentABC
+
+logger = logging.getLogger(__name__)
 
 
-class TestAgent(AgentBase):
+class TestAgent(AgentABC):
+
     def __init__(self, app, agent_id):
-        self.app = app
-        self.agent_id = agent_id
+        super().__init__(app, agent_id)
+        logger.debug('Test Agent Started')
 
     def can_perform(self, agent_id, ontology_node_id) -> bool:
         pass
@@ -26,4 +28,4 @@ class TestAgent(AgentBase):
         pass
 
     def list_providers(self, agent_id, ontology_node_id) -> list:
-         pass
+        pass

@@ -8,28 +8,30 @@
 # Distributed under the MIT software license, see LICENSE file.
 #
 
-from abc import ABCMeta, abstractmethod
-from sn_agent.network.enum import NetworkStatus
-from sn_agent.ontology.ontology import Ontology
-from enum import Enum
+import logging
+from abc import abstractmethod, ABC
+
+from sn_agent.ontology.service_descriptor import ServiceDescriptor
+
+logger = logging.getLogger(__name__)
 
 
-class AgentBase(metaclass=ABCMeta):
+class AgentABC(ABC):
     def __init__(self, app, agent_id):
         self.app = app
         self.agent_id = agent_id
 
     @abstractmethod
-    def can_perform(self, agent_id, ontology_node_id) -> bool:
+    def can_perform(self, agent_id, service: ServiceDescriptor) -> bool:
         """
         :param agent_id:
-        :param ontology_node_id:
+        :param service:
         :return:
         """
         pass
 
     @abstractmethod
-    def perform(self, agent_id, ontology_id, json_content) -> bool:
+    def perform(self, agent_id, service: ServiceDescriptor, json_content) -> bool:
         """
 
         :return:
@@ -37,12 +39,12 @@ class AgentBase(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def list_providers(self, agent_id, ontology_node_id) -> list:
+    def list_providers(self, agent_id, service: ServiceDescriptor) -> list:
         """
         This is used for creating the tree of services behind a given ontology
 
         :param agent_id:
-        :param ontology_node_id:
+        :param service:
         :return:
         """
         pass
