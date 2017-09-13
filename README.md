@@ -1,7 +1,16 @@
 # SingularityNET
 
 SingularityNET allows multiple AI computing agents to work as a whole to
- provide various services in a distributed and decentralized way.
+provide various services in a distributed and decentralized way.
+ 
+For the first time, we have a financial substrate in the blockchain that
+lets us align diverse AI technologies and functions into a coherent financial
+and cognitive whole. The SingularityNET architecture incorporating block-chain 
+smart-contracts and automatic payment will let diverse AIs integrate together
+into a single dynamic intelligence. AI agents incorporating the OpenCog AGI
+framework, Google Tensorflow and other powerful tools, interacting within the
+SingularityNET; will bootstrap the research and development of an AGI economy.
+
 
 ## Contents ##
 
