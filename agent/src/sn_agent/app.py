@@ -4,7 +4,6 @@ import logging
 import uvloop
 from aiohttp import web
 
-import sn_agent_ui
 from sn_agent.agent import setup_agent
 from sn_agent.log import setup_logging
 from sn_agent.network import setup_network
@@ -29,10 +28,5 @@ def create_app():
     setup_agent(app)
 
     app['name'] = 'SingularityNET Agent'
-
-    # Leave this off until it is working
-    if False:
-        admin = sn_agent_ui.get_admin()
-        app.add_subapp('/admin/', admin)
 
     return app

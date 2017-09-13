@@ -1,6 +1,6 @@
-from jinja2.utils import import_string
 
 from sn_agent.network.settings import NetworkSettings
+from sn_agent.utils import import_string
 
 
 def setup_network(app):

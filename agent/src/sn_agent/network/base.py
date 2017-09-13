@@ -10,6 +10,7 @@
 
 from abc import abstractmethod, ABC
 
+from sn_agent.agent.base import AgentABC
 from sn_agent.network.enum import NetworkStatus
 from sn_agent.network.settings import NetworkSettings
 from sn_agent.ontology.service_descriptor import ServiceDescriptor
