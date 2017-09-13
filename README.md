@@ -1,8 +1,22 @@
 # SingularityNET
 
-To allow multiple computers to work as a whole to provide various services in a distributed and decentralized way.
+SingularityNET allows multiple AI computing agents to work as a whole to
+ provide various services in a distributed and decentralized way.
+
+## Contents ##
+
+* [**Architectural Overview**](#architectural-overview) - the system architecture
+ and high-level design
+* [**Example Scenario**](#example-scenario) - a non-trivial example of
+ SingularityNET agent interaction
+* [**SingularityNET API**](#singularitynet-api) - the interfaces required to
+ implement or call agents to perform services
+* [**Getting Started**](#getting-started) - instructions for getting
+ SingularityNET running on your system
+
 
 ## Architectural Overview ##
+
 There are seven major interacting components in the SingularityNET architecture:
 
 * **Network** - the block-chain and smart-contract network used for agent 
@@ -28,6 +42,7 @@ There are seven major interacting components in the SingularityNET architecture:
 * **ExternalServiceProvider** - a wrapper for interacting with external service
  agents in the SingularityNET universe.
 
+
 ## Example Scenario ##
 A SingularityNET Agent provides document summarization services for corporate work
 groups. As inputs for this service, it might require:
@@ -45,7 +60,9 @@ relevant objects and people in images; ranking relevance; processing video to
 extract objects, people and a textual description; and generating
 a ranked summary of the document.
 
+
 ### Internal Services ###
+
 The SingularityNET Agent might perform the following services internally:
 
 * **Final Document Summary** - assembling the parts and generating the final product
@@ -54,6 +71,7 @@ The SingularityNET Agent might perform the following services internally:
 
 
 ### External Services ###
+
 The Agent might use ExternalServiceProvider agents to perform the following services:
 
 * **Word Sense Disambiguation** - a sub-service used by the Agent's Text Summary
@@ -73,7 +91,9 @@ The architecture supports scenarios like the above where individual agents may
 provide subsets or all of the services required to deliver any Service in the
 ontology.
 
-## SingularityNET API
+
+## SingularityNET API ##
+
 
 ### NetworkABC ###
 The base class for block-chain netwoks. NetworkABC defines the protocol for
@@ -110,40 +130,56 @@ Additionally, ServiceAdapterABC subclasses may also implement:
  sub-services
 
 
+## Getting Started ##
 
-## Getting Started
+These instructions will get you a copy of the project up and running on your local
+machine for development and testing purposes. See deployment for notes on how to
+deploy the project on a live system.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The agent is service responsible for communicating with the workers and the rest
+of the network. You can run an agent connected to the network as a client or as
+a client with underlying workers.
 
-The agent is service responsible for communicating with the workers and the rest of the network. You can run an agent connected to the network as a client or as a client with underlying workers.
 
-### Prerequisites
+### Prerequisites ###
 
-At this time, the only OS that this has been tested on is Ubunut 16.04 LTS. This may change in the future but for now, you must start there. There are only a few system level requirement.
-The installer script will download, compile several packages but they are all installed locally. To support the compilation, the operating system needs to have the following run:
+At this time, the only OS that this has been tested on is Ubunut 16.04 LTS. This
+may change in the future but for now, you must start there. There are only a
+few system level requirement.
+
+The installer script will download, compile several packages but they are all
+installed locally. To support the compilation, the operating system needs to
+have the following run:
 
 ```
 sudo ./tools.sh system-prep
 ```
 
-If you are installing the agent to provide work and have an NVIDIA GPU, please start by running:
+If you are installing the agent to provide work and have an NVIDIA GPU, please
+start by running:
 
 ```
 sudo ./tools.sh system-gpu-prep
 ```
 
-### Installing
 
-The install process can take a bit of time. If you run into any issue, please do not hesitate to file a but report. Be sure to include the last few lines of the console output to help us determine where it failed.
+### Installing ###
 
-You will not need sudo for the install as long as the items in the prerequisites section have been installed properly.
+The install process can take a bit of time. If you run into any issue, please
+do not hesitate to file a but report. Be sure to include the last few lines of
+the console output to help us determine where it failed.
+
+You will not need sudo for the install as long as the items in the prerequisites
+section have been installed properly.
 
 ```
 ./tools.sh prep
 ```
-You can re-run prep over and over again as it, in most cases, will not re-install because it does checks to make sure the component exists or not, if it exists it does not run again.
+You can re-run prep over and over again as it, in most cases, will not
+re-install because it does checks to make sure the component exists or not,
+if it exists it does not run again.
 
-## Running the tests
+## Running the tests ##
 
 Tests are handled by PyTest via Tox
 
@@ -151,32 +187,43 @@ Tests are handled by PyTest via Tox
 ./tools.sh test
 ```
 
-### Generating docs
 
-Docs are not currently included in the source as they are changing rapidly. We do suggest you create the docs and look them over. Once this settles, we will likely have a online reference to these.
+### Generating docs ###
+
+Docs are not currently included in the source as they are changing rapidly. We
+do suggest you create the docs and look them over. Once this settles, we will
+likely have a online reference to these.
 
 ```
 ./tools.sh docs
 ```
 
+
 ## Deployment
 
-We will update this section once things settle out, likely this will be a docker image or some other stateful package.
+We will update this section once things settle out, likely this will be a
+docker image or some other stateful package.
+
 
 ## Built With
 
-* [AIOHttp](https://aiohttp.readthedocs.io/en/stable/) - The async web framework used
+* [AIOHttp](https://aiohttp.readthedocs.io/en/stable/) - The async web
+framework used to handle JSONRPC and HTML requests
 * [SQLAlchemy](https://www.sqlalchemy.org/) - Internal data storage
+
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of
+conduct, and the process for submitting pull requests to us.
+
 
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/opencog/singnet/tags). 
 
 See also the list of [contributors](https://github.com/opencog/singnet/graphs/contributors) who participated in this project.
+
 
 ## License
 

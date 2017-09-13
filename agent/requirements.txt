@@ -1,26 +1,13 @@
 aiohttp
 cchardet
-aiodns
-aiohttp_jinja2
-aiohttp_debugtoolbar
-aiobotocore
-aiohttp-devtools
-aiohttp-swagger[performance]
-aiohttp-session[secure]
-jsonrpcclient[aiohttp]
-jsonrpcserver[aiohttp]
-semver
-
 uvloop
+urllib3
 
-colorlog
-
-pytest-aiohttp
-pytest-cov
-pytest
-tox
+jsonrpcclient
+jsonrpcserver
 
 rdflib
-urllib3
+pyaml
+
+# For some reason jsonrpcclient is using this even though we are using the aiohttp implementation - perhaps under the covers?
 requests
-sphinx

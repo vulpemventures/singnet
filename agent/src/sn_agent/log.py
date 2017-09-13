@@ -8,16 +8,12 @@ def setup_logging():
         'formatters': {
             'standard': {
                 'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
-            },
-            'colored': {
-                '()': 'colorlog.ColoredFormatter',
-                'format': "%(log_color)s%(levelname)-8s%(reset)s %(blue)s%(message)s"
             }
         },
         'handlers': {
             'default': {
                 'level': 'DEBUG',
-                'formatter': 'colored',
+                'formatter': 'standard',
                 'class': 'logging.StreamHandler',
             },
         },

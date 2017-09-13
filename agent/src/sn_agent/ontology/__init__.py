@@ -1,6 +1,6 @@
-from jinja2.utils import import_string
 
 from sn_agent.ontology.settings import OntologySettings
+from sn_agent.utils import import_string
 
 
 def setup_ontology(app):

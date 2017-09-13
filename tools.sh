@@ -42,8 +42,31 @@ REDIS=${REDIS_DIR}/bin/redis-server
 GETH=${INSTALL_DIR}/geth/geth
 SOLC=${INSTALL_DIR}/solidity-src/build/solc/solc
 
+function ensure_root {
+    # Make sure only root can run our script
+    if [[ $EUID -ne 0 ]]; then
+       echo "This script must be run as root" 1>&2
+       exit 1
+    fi
+}
+
 function system_prep {
-    sudo apt install build-essential cmake libboost-all-dev libz3-dev libcupti-dev zlib1g-dev g++ libssl-dev
+    ensure_root
+    apt install build-essential cmake libboost-all-dev libz3-dev libcupti-dev zlib1g-dev g++ libssl-dev
+}
+
+function install_docker {
+    ensure_root
+
+    #https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
+    apt-get remove docker docker-engine docker.io
+    apt-get update
+    apt-get install apt-transport-https ca-certificates curl software-properties-common linux-image-extra-$(uname -r) linux-image-extra-virtual
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+    apt-key fingerprint 0EBFCD88
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    apt-get update
+    apt-get install docker-ce
 }
 
 function ensure_install_dir {
@@ -312,6 +335,10 @@ prep)
 
     npm_run
     copy_vendor
+    ;;
+
+install_docker)
+    install_docker
     ;;
 
 run)

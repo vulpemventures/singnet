@@ -1,6 +1,6 @@
-from jinja2.utils import import_string
 
 from sn_agent.agent.settings import AgentSettings
+from sn_agent.utils import import_string
 
 
 def setup_agent(app):

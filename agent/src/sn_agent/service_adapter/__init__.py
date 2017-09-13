@@ -1,9 +1,9 @@
 import yaml
-from jinja2.utils import import_string
 
 from sn_agent.service_adapter.jsonrpc import JsonRpcServiceAdapter
 from sn_agent.service_adapter.opencog import OpenCogServiceAdapter
 from sn_agent.service_adapter.settings import ServiceAdapterSettings
+from sn_agent.utils import import_string
 
 
 class ServiceManager:
