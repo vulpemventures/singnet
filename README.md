@@ -210,8 +210,8 @@ likely have a online reference to these.
 
 ## Deployment
 
-We will update this section once things settle out, likely this will be a
-docker image or some other stateful package.
+We are working on Docker images for easy deployment. For the moment, the
+installation relies on building from source on the target machine.
 
 
 ## Built With
