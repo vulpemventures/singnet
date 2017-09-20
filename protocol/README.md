@@ -19,13 +19,9 @@ Includes contracts, migrations, tests, user interface and webpack build pipeline
 **testRPC**
 `npm install -g ethereumjs-testrpc`
 
-## Clone
-
-`git clone http://guest@gitlab.vulpem.com/singularity/dao.git`
-
 
 ## Build 
-1.  First run `cd dao && npm i`
+1.  First `cd protocol && npm i`
 2.  `truffle compile` and run on separated tab `testrpc`
 3.  `truffle migrate` to deploy the contracts onto your network of choice (default "development").
 4. Copy the addresses where the contracts have been deployed 
