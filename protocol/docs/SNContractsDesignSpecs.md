@@ -49,18 +49,15 @@ To make your app work on Ethereum, you can use the web3 object provided by the w
 
 ### Methods
 
-
-* createAgent(uint service) : address
-* joinOrg(address,org) : address 
-* sendPacket(address target, bytes packet) : void
-* appendPacket(bytes packet) : void
+* joinNetwork() : address
+* appendPacket(packet) : void 
 * getPacket(uint id) : bytes
-* getAgentsWithService(uint service) : uint[]
-* getAgent(uint id) : address
-* addAgent(uint id, address) : void
-* sendEther({from,value,to}) : void
+* advertiseService(uint id, address) : void
+* findServiceProviders(uint service) : uint[]
+* getAgentbyId(uint id) : address
 
 ### Events 
+
 [web3.py Events doc](https://web3py.readthedocs.io/en/latest/contracts.html#events)
 * AgentAdded(uint id, address agent)
 * Deposited(address from, uint value)

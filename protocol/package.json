@@ -1,18 +1,13 @@
 {
   "name": "singnet-contracts",
   "version": "1.0.0",
-  "description": "Includes contracts, migrations, tests, user interface and webpack build pipeline.",
-  "main": "app/index.js",
+  "description": "Includes contracts, migrations, tests",
   "directories": {
     "doc": "docs",
     "test": "test"
   },
   "scripts": {
     "test": "truffle test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@vulpem.westeurope.cloudapp.azure.com:singularity/dao.git"
   },
   "author": "tiero",
   "license": "MIT",
