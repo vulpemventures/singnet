@@ -1,3 +1,5 @@
+var fs = require('fs')
+
 var Agent = artifacts.require('agent/Agent.sol')
 var AgentFactory = artifacts.require('agent/AgentFactory.sol')
 var AgentRegistry = artifacts.require('registries/AgentRegistry.sol')
@@ -17,5 +19,22 @@ module.exports = function(deployer) {
     ownable,
     Organization,
     OrganizationFactory
-  ])
+  ]).then(() => {
+    const fileName = "addresses.json"
+    const content = {
+      Agent: Agent.address,
+      AgentFactory: AgentFactory.address,
+      AgentRegistry: AgentRegistry.address,
+      FixedSupplyToken: FixedSupplyToken.address,
+      Escrow: Escrow.address,
+      ownable: ownable.address,
+      Organization: Organization.address,
+      OrganizationFactory: OrganizationFactory.address
+    }
+
+    fs.writeFile(fileName, JSON.stringify(content), 'utf-8', (err) => {
+      if (err) { throw err }
+      console.log("Contracts' addresses saved in ./" + fileName)
+    })
+  })
 };
